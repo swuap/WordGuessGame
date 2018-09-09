@@ -44,10 +44,13 @@ document.onkeyup = function(event){
       }
     }
     
+    var bank = "";
+    bank = bank + letter;
+
     count++;
     document.getElementById("counter").innerHTML = "No of guesses: " + count;
     document.getElementById("answer").innerHTML = answerArray.join(" ");
-    document.getElementById("guesses").innerHTML = "You have guessed: " + letter;
+    $("#guesses").append(letter + ", ");
   }
   if(count>15) {
     document.getElementById("stat").innerHTML = "You should have guessed it by now!";

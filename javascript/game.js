@@ -1,22 +1,21 @@
-// start hangman game! 
 
 alert('Press any key to get started!');
 
 
-// list of different cities in Texas for hangman game.
+// these are the cities that will be guessed
 
 var cities = ['dallas', 'austin', 'arlington', 'houston','addison', 'plano', 'burleson', 'mansfield', 'grapevine', 'garland', 'allen']
 
-// using above array we choose a random word.
+// this chooses a word from the cities variable at random
 var cityType = cities[Math.floor(Math.random() * cities.length)];
 console.log(cityType);
 
 // global variables 
 
 var s;
-var count = 0;
+var count = 15;
 var answerArray = [];
-
+var score = 0
 
 // filling the answer array with underscores as required
 // number of underscores correlates to the randomly selected word in the array
@@ -44,15 +43,24 @@ document.onkeyup = function(event){
       }
     }
     
-    var bank = "";
-    bank = bank + letter;
+    // trying to do a score tracker here
+    if (answerArray === cityType) {
+      score++;
+    }
 
-    count++;
-    document.getElementById("counter").innerHTML = "No of guesses: " + count;
+    console.log(answerArray);
+  
+
+    count--;
+    document.getElementById("counter").innerHTML = "No of guesses remaining: " + count;
     document.getElementById("answer").innerHTML = answerArray.join(" ");
     $("#guesses").append(letter + ", ");
+    document.getElementById("wins").innerHTML = "Number of wins: " + score;
   }
   if(count>15) {
-    document.getElementById("stat").innerHTML = "You should have guessed it by now!";
+    document.getElementById("stat").innerHTML = "You've had too many guesses!";
   }
 };
+
+
+

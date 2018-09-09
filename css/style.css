@@ -15,3 +15,8 @@
 	margin: auto;
 	margin-top: 20px;
 }
+
+#answer {
+	font-size: 35px;
+	color: blue; 
+}
